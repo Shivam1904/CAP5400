@@ -1,4 +1,5 @@
-baboon.pgm baboon_bi125.pgm binarize 125
-baboon.pgm baboon_add50.pgm add 50
-baboon.pgm baboon_s200.pgm scale 2
-baboon.pgm baboon_s50.pgm scale 0.5
+baboon.pgm main.pgm scale 0.5
+main.pgm add.pgm add 50
+main.pgm scale.pgm scale 0.5
+main.pgm binarize.pgm binarize 125
+main.pgm doublebinarize.pgm doublebinarize 100 200

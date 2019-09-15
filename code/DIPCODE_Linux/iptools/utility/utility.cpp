@@ -72,3 +72,19 @@ void utility::scale(image &src, image &tgt, float ratio)
 		}
 	}
 }
+
+/*-----------------------------------------------------------------------**/
+void utility::doublebinarize(image &src, image &tgt, int lower_threshold, int upper_threshold)
+{
+	tgt.resize(src.getNumberOfRows(), src.getNumberOfColumns());
+	for (int i=0; i<src.getNumberOfRows(); i++)
+	{
+		for (int j=0; j<src.getNumberOfColumns(); j++)
+		{
+			if ((src.getPixel(i,j) > lower_threshold) && (src.getPixel(i,j) < upper_threshold))
+				tgt.setPixel(i,j,MAXRGB);
+			else
+				tgt.setPixel(i,j,MINRGB);
+		}
+	}
+}

@@ -40,11 +40,12 @@ int main (int argc, char** argv)
 	while(fgets(str,MAXLEN,fp) != NULL) {
 		pch = strtok(str, " ");
 		src.read(pch);
-
 		pch = strtok(NULL, " ");
 		strcpy(outfile, pch);
 
 		pch = strtok(NULL, " ");
+
+
         if (strncasecmp(pch,"add",MAXLEN)==0) {
 			/* Add Intensity */
 			pch = strtok(NULL, " ");
@@ -61,6 +62,12 @@ int main (int argc, char** argv)
 			/* Image scaling */
 			pch = strtok(NULL, " ");
 			utility::scale(src,tgt,atof(pch));
+		}
+
+		else if (strncasecmp(pch,"doublebinarize",MAXLEN)==0) {
+			/* Double Thresholding */
+			pch = strtok(NULL, " ");
+			utility::doublebinarize(src,tgt,atof(pch), atof(strtok(NULL, " ")));
 		}
 
 		else {

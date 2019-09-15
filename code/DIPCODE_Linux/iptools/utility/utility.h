@@ -2,7 +2,6 @@
 #define UTILITY_H
 
 #include "../image/image.h"
-#include <sstream>
 #include <math.h>
 
 class utility
@@ -15,6 +14,7 @@ class utility
 		static void addGrey(image &src, image &tgt, int value);
 		static void binarize(image &src, image &tgt, int threshold);
 		static void scale(image &src, image &tgt, float ratio);
+		static void doublebinarize(image &src, image &tgt, int lower_threshold, int upper_threshold    );
 };
 
 #endif
