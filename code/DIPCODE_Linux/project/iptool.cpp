@@ -31,7 +31,7 @@ int main (int argc, char** argv)
 	FILE *fp;
 	char str[MAXLEN];
 	char outfile[MAXLEN];
-	char *pch;
+	char *pch, *param_file;
 	if ((fp = fopen(argv[1],"r")) == NULL) {
 		fprintf(stderr, "Can't open file: %s\n", argv[1]);
 		exit(1);
@@ -64,10 +64,10 @@ int main (int argc, char** argv)
 			utility::scale(src,tgt,atof(pch));
 		}
 
-		else if (strncasecmp(pch,"doublebinarize",MAXLEN)==0) {
+		else if (strncasecmp(pch,"hw1",MAXLEN)==0) {
 			/* Double Thresholding */
-			pch = strtok(NULL, " ");
-			utility::doublebinarize(src,tgt,atof(pch), atof(strtok(NULL, " ")));
+			param_file = strtok(NULL, " ");
+			utility::hw1(src, tgt, param_file);
 		}
 
 		else {

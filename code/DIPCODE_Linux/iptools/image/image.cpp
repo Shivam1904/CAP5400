@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <strings.h>
+#include <string.h>
 
 using namespace std;
 
