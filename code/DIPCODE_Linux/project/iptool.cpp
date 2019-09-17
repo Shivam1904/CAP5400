@@ -31,13 +31,14 @@ int main (int argc, char** argv)
 	FILE *fp;
 	char str[MAXLEN];
 	char outfile[MAXLEN];
-	char *pch, *param_file;
+	
 	if ((fp = fopen(argv[1],"r")) == NULL) {
 		fprintf(stderr, "Can't open file: %s\n", argv[1]);
 		exit(1);
 	}
 
 	while(fgets(str,MAXLEN,fp) != NULL) {
+		char *pch;
 		pch = strtok(str, " ");
 		src.read(pch);
 		pch = strtok(NULL, " ");
@@ -64,17 +65,24 @@ int main (int argc, char** argv)
 			utility::scale(src,tgt,atof(pch));
 		}
 
-		else if (strncasecmp(pch,"hw1",MAXLEN)==0) {
+		else if (strncasecmp(pch,"doubleBinarization",MAXLEN)==0 || strncasecmp(pch,"doubleBinarization\n",MAXLEN)==0) {
 			/* Double Thresholding */
-			param_file = strtok(NULL, " ");
-			utility::hw1(src, tgt, param_file);
+			utility::hw1(src, tgt, 1,"param_hw1_q1.txt");
+			
+		}
+		else if (strncasecmp(pch,"smoothFilter",MAXLEN)==0 || strncasecmp(pch,"smoothFilter\n",MAXLEN)==0) {
+			/* Filtering using Mean Uniform Filter */
+			utility::hw1(src, tgt, 2,"param_hw1_q2.txt");
+		}
+		else if (strncasecmp(pch,"colorThreshold",MAXLEN)==0 || strncasecmp(pch,"colorThreshold\n",MAXLEN)==0) {
+			/* Color Thresholding */
+			utility::hw1(src, tgt, 3, "param_hw1_q3.txt");
 		}
 
 		else {
 			printf("No function: %s\n", pch);
 			continue;
 		}
-       
 		tgt.save(outfile);
 	}
 	fclose(fp);

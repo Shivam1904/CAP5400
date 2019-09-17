@@ -3,5 +3,5 @@ baboon.pgm baboon_add50.pgm add 50
 baboon.pgm baboon_s200.pgm scale 2
 baboon.pgm baboon_s50.pgm scale 0.5
 baboon.pgm baboon_grey_doublebinarize1.pgm doubleBinarization
-baboon.pgm baboon_grey_doublebinarize2.pgm smoothFilter
-baboon.pgm baboon_grey_doublebinarize3.pgm colorThreshold
+dice.pgm dice_grey_smooth.pgm smoothFilter
+mount_coloured.ppm mount_coloured_ct.ppm colorThreshold

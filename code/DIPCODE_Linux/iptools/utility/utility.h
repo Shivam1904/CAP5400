@@ -26,7 +26,7 @@ class utility
 		static void scale(image &src, image &tgt, float ratio);
 
 		// Assigment_1
-		static void hw1(image &src, image &tgt,  char *param_file);
+		static void hw1(image &src, image &tgt, int q, char* param_file_name);
 		
 		// Questions 1,2,3 for HW1
 		static void doubleBinarize(image &src, image &tgt, struct roi current_roi, int t1, int t2);

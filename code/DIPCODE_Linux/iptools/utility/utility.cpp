@@ -92,15 +92,15 @@ void utility::scale(image &src, image &tgt, float ratio)
 /*-----------------------------------------------------------------------**/
 /*                              HOMEWORK 1                                */
 /*-----------------------------------------------------------------------**/
-void utility::hw1(image &src, image &tgt, char *param_file_name)
+void utility::hw1(image &src, image &tgt,   int ques, char* param_file_name)
 {
     tgt.resize(src.getNumberOfRows(), src.getNumberOfColumns());
+    cout << "rows:: " << src.getNumberOfRows() << "columns:: " << src.getNumberOfColumns();
     tgt.copyImage(src);
 
     FILE *fp;
     char str[MAXLEN];
     char *lp;
-    int ques;
     int x1,x2,y1,y2,windowsize;
     int t1, t2;
     int cr,cg,cb,tc;
@@ -115,8 +115,6 @@ void utility::hw1(image &src, image &tgt, char *param_file_name)
     while(fgets(str,MAXLEN,fp) != NULL) {
         i++;
         lp = strtok(str, " ");
-        ques = atoi(lp);
-        lp = strtok(NULL, " ");
         x1 = atoi(lp);
         lp = strtok(NULL, " ");
         y1 = atoi(lp);
@@ -192,6 +190,7 @@ void utility::doubleBinarize(image &src, image &tgt, struct roi current_roi, int
                 tgt.setPixel(i,j,MAXRGB);
         }
     }
+    // cout <<" ho gaya \n";
 }
 
 void utility::colorBinarization(image &src, image &tgt, struct roi current_roi, int cr, int cg, int  cb, int tc)
@@ -205,9 +204,9 @@ void utility::colorBinarization(image &src, image &tgt, struct roi current_roi, 
 
             if(isInRange(cr,cg,cb,r,g,b,tc))
             {
-                tgt.setPixel(i,j,RED,r);
-                tgt.setPixel(i,j,GREEN,g);
-                tgt.setPixel(i,j,BLUE,b);
+                tgt.setPixel(i,j,RED,MAXRGB);
+                tgt.setPixel(i,j,GREEN,MAXRGB);
+                tgt.setPixel(i,j,BLUE,MAXRGB);
             }else{
                 tgt.setPixel(i,j,RED,MINRGB);
                 tgt.setPixel(i,j,GREEN,MINRGB);
